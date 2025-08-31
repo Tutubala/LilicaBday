@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feliz Aniversário, Leticia! 🎉</title>
+  <style>
+    body {
+      background: #fff8dc;
+      color: #d2691e;
+      font-family: 'Courier New', cursive;
+      text-align: center;
+      padding: 2em;
+      overflow: hidden;
+    }
+
+    h1 { font-size: 2.5em; }
+
+    .cake {
+      font-size: 3em;
+      animation: bounce 1s infinite alternate;
+      cursor: pointer;
+    }
+
+    .mensagem {
+      display: none;
+      margin-top: 1em;
+      font-size: 1.2em;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .galeria img {
+      width: 150px;
+      height: auto;
+      margin: 0.5em;
+      border-radius: 10px;
+    }
+
+    @keyframes bounce {
+      from { transform: scale(1); }
+      to { transform: scale(1.2); }
+    }
+
+    .confetti {
+      position: fixed;
+      top: -50px;
+      font-size: 24px;
+      animation: fall 6s linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Feliz Aniversário, Leticia! 🎂🎉</h1>
+  <p>Clique no bolo abaixo para ver uma mensagem especial...</p>
+  <div class="cake" onclick="mostrarMensagem(); tocarMusica()">🎂</div>
+
+  <audio id="player" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <div class="mensagem" id="mensagemDeAmor">
+    <p>Meu amor,<br><br>
+    Hoje é um dia único: o dia em que você chegou ao mundo e, muito tempo depois, à minha vida para transformá-la por completo. ✨<br><br>
+    Que essa nova fase venha cheia de saúde, conquistas, felicidade e muito amor. Eu sou grato por cada momento ao seu lado e por poder celebrar sua existência. <br><br>
+    Feliz aniversário, meu bem! Te amo mais do que tudo. 💕<br><br>
+    Com todo carinho,<br>
+    Seu eterno namorado 💌</p>
+  </div>
+
+  <h2>Nossos Momentos</h2>
+  <div class="galeria">
+    <img src="imagens/foto1.jpg" alt="Momento 1">
+    <img src="imagens/foto2.jpg" alt="Momento 2">
+    <img src="imagens/foto3.jpg" alt="Momento 3">
+  </div>
+
+  <script>
+    function mostrarMensagem() {
+      document.getElementById('mensagemDeAmor').style.display = 'block';
+    }
+
+    function tocarMusica() {
+      document.getElementById("player").play();
+    }
+
+    function criarConfetti() {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = Math.random() * 100 + "vw";
+      const emojis = ["🎉", "🎂", "🎁", "✨", "❤️"];
+      confetti.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 6000);
+    }
+
+    setInterval(criarConfetti, 400);
+  </script>
+
+</body>
+</html>
